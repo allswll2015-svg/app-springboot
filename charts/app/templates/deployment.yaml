@@ -32,7 +32,7 @@ spec:
             runAsNonRoot: true
             capabilities:
               drop:
-              - ALL
+                - ALL
           ports:
             - name: http
               containerPort: 8080
