@@ -1,0 +1,33 @@
+apiVersion: external-secrets.io/v1
+kind: SecretStore
+metadata:
+  name: demo-k8s-secretstore
+  namespace: demo
+spec:
+  provider:
+    kubernetes:
+      remoteNamespace: demo
+      server:
+        url: https://kubernetes.default.svc
+      auth:
+        serviceAccount:
+          name: default
+---
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: demo-db-password
+  namespace: demo
+spec:
+  refreshInterval: 1m
+  secretStoreRef:
+    name: demo-k8s-secretstore
+    kind: SecretStore
+  target:
+    name: demo-db-password
+    creationPolicy: Owner
+  data:
+    - secretKey: SPRING_DATASOURCE_PASSWORD
+      remoteRef:
+        key: demo-secret-source
+        property: dbPassword

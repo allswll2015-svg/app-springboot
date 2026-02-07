@@ -1,0 +1,9 @@
+image:
+  repository: demo
+  tag: "local"
+  pullPolicy: IfNotPresent
+
+env:
+  SPRING_PROFILES_ACTIVE: "default"
+  SPRING_DATASOURCE_URL: "jdbc:postgresql://demo-postgres:5432/appdb"
+  SPRING_DATASOURCE_USERNAME: "appuser"
