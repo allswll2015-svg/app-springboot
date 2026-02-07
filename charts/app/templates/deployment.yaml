@@ -15,8 +15,6 @@ spec:
       labels:
         app.kubernetes.io/instance: {{ .Release.Name }}
         app.kubernetes.io/name: {{ include "app.name" . }}
-      annotations:
-        rolloutTimestamp: "{{ now | date \"2006-01-02T15:04:05Z07:00\" }}"
     spec:
       securityContext:
         seccompProfile:
