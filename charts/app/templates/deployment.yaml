@@ -34,7 +34,7 @@ spec:
             - configMapRef:
                 name: {{ include "app.fullname" . }}
             - secretRef:
-                name: {{ include "app.fullname" . }}-db
+                name: demo-api-app-db
           readinessProbe:
             httpGet:
               path: /actuator/health
